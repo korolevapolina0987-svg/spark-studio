@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Spark — студия пилатеса, растяжки и йоги</title>
+  <meta name="description" content="Spark: пилатес на реформерах, растяжка, йога и аэройога в группах до 8 человек. Расписание, абонементы и запись на пробное занятие.">
+  <meta name="theme-color" content="#FBE7E8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z' fill='%23D8344E'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/geologica-cyrillic-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geologica-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="star" viewBox="0 0 24 24"><path d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z" fill="currentColor"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <header class="header" id="header">
+    <div class="wrap">
+      <a class="logo" href="#top" aria-label="Spark — на главную"><svg aria-hidden="true"><use href="#star"/></svg>spark</a>
+      <nav class="nav" aria-label="Разделы">
+        <a href="#directions">Направления</a>
+        <a href="#schedule">Расписание</a>
+        <a href="#prices">Абонементы</a>
+        <a href="#coaches">Тренеры</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <a class="btn btn-dark btn-sm head-cta" href="#signup">Пробное занятие</a>
+      <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-menu" id="mobile-menu" hidden aria-label="Меню">
+    <a href="#directions">Направления</a><a href="#schedule">Расписание</a><a href="#prices">Абонементы</a><a href="#coaches">Тренеры</a><a href="#faq">Вопросы</a>
+    <a class="btn btn-crimson" href="#signup">Пробное занятие за 500 ₽</a>
+  </nav>
+
+  <main id="top">
+    <!-- первый экран -->
+    <section class="hero" aria-label="Spark">
+      <div class="blob blob-a"></div><div class="blob blob-b"></div><div class="blob blob-c"></div>
+      <div class="sun" id="sun"></div>
+      <div class="clouds" id="clouds" aria-hidden="true">
+        <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <linearGradient id="cl1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE9EA"/><stop offset="1" stop-color="#F6B9C2"/></linearGradient>
+            <linearGradient id="cl2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6F4"/><stop offset="1" stop-color="#F9D2D7"/></linearGradient>
+            <linearGradient id="cl3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FBE7E8"/></linearGradient>
+          </defs>
+          <g fill="url(#cl1)" opacity=".9"><circle cx="90" cy="250" r="140"/><circle cx="280" cy="210" r="150"/><circle cx="470" cy="270" r="120"/><circle cx="960" cy="260" r="130"/><circle cx="1160" cy="200" r="160"/><circle cx="1370" cy="250" r="150"/><rect x="0" y="260" width="1440" height="200"/></g>
+          <g fill="url(#cl2)"><circle cx="-10" cy="320" r="120"/><circle cx="190" cy="300" r="110"/><circle cx="380" cy="330" r="120"/><circle cx="600" cy="340" r="100"/><circle cx="820" cy="340" r="110"/><circle cx="1040" cy="310" r="120"/><circle cx="1250" cy="320" r="110"/><circle cx="1450" cy="300" r="130"/><rect x="0" y="330" width="1440" height="120"/></g>
+          <g fill="url(#cl3)"><circle cx="120" cy="400" r="90"/><circle cx="330" cy="390" r="80"/><circle cx="520" cy="410" r="90"/><circle cx="720" cy="395" r="85"/><circle cx="930" cy="410" r="90"/><circle cx="1130" cy="395" r="85"/><circle cx="1340" cy="405" r="95"/><rect x="0" y="400" width="1440" height="40"/></g>
+        </svg>
+      </div>
+      <div class="grain"></div>
+      <span class="spark" style="left:12%;top:22%;--s:34px;--c:#fff;--d:5s"><svg><use href="#star"/></svg></span>
+      <span class="spark" style="left:8%;top:52%;--s:18px;--c:#D8344E;--d:4s;--dl:-1s"><svg><use href="#star"/></svg></span>
+      <span class="spark" style="right:14%;top:18%;--s:44px;--c:#fff;--d:6s;--dl:-2s"><svg><use href="#star"/></svg></span>
+      <span class="spark" style="right:9%;top:44%;--s:22px;--c:#D8344E;--d:4.5s;--dl:-3s"><svg><use href="#star"/></svg></span>
+      <span class="spark" style="left:28%;top:12%;--s:14px;--c:#EF6F6C;--d:3.5s"><svg><use href="#star"/></svg></span>
+
+      <div class="hero-in">
+        <span class="eyebrow"><svg><use href="#star"/></svg>Студия пилатеса, растяжки и йоги</span>
+        <h1 id="hero-title">Двигайся мягко. Становись сильнее.</h1>
+        <p class="hero-sub">Пилатес на реформерах, растяжка, йога и аэройога в группах до 8 человек. Тренер видит каждого.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#signup">Записаться на пробное <span class="btn-dot"><svg><use href="#arrow"/></svg></span></a>
+          <a class="btn btn-light" href="#schedule">Смотреть расписание</a>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div class="chip-glass"><img src="assets/img/reformer-sit.webp" alt="" width="40" height="40"><span><b>Первое занятие — 500 ₽</b><br>любое направление</span></div>
+        <a class="scroll-hint" href="#why"><i></i>Листайте</a>
+      </div>
+    </section>
+
+    <!-- почему Spark -->
+    <section class="section" id="why">
+      <div class="wrap">
+        <div class="sec-head split">
+          <h2 class="reveal-text" data-reveal>Почему к нам возвращаются</h2>
+          <p class="lead">Маленькие группы, светлые залы и тренеры, которые помнят ваше имя и вашу спину.</p>
+        </div>
+        <div class="bento">
+          <div class="tile t1"><img class="cover" src="assets/img/reformer-top.webp" alt="Девушка занимается на реформере" loading="lazy"><span class="tag">10 реформеров из бука</span></div>
+          <div class="tile t2"><span class="big num">8</span><p>человек максимум в группе: тренер поправит каждое движение</p></div>
+          <div class="tile t3"><img class="cover" src="assets/img/aero-hall.webp" alt="Зал для йоги и аэройоги с панорамными окнами" loading="lazy"><span class="tag">Панорамные окна и гамаки для аэройоги</span></div>
+          <div class="tile t4"><span class="big num" style="font-size:2.6rem">4</span><p>направления</p></div>
+          <div class="tile t5"><b style="font-weight:500;font-size:1.15rem">Не нужна подготовка</b><p>Начать можно с любого уровня: нагрузку подбираем под вас</p></div>
+          <div class="tile t6"><img class="cover" src="assets/img/stretch-butterfly.webp" alt="Растяжка в светлом зале" loading="lazy"><span class="tag">Коврики, ролы и полотенца — всё есть</span></div>
+          <div class="tile t7">
+            <p>Сегодня в студии</p>
+            <div class="mini-sched" id="mini-sched"></div>
+          </div>
+          <div class="tile t8"><img class="cover" src="assets/img/reformer-wall.webp" alt="Занятие на реформере у перфорированной стены" loading="lazy"><span class="tag">Душ, раздевалки и чай после занятия</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- направления -->
+    <section class="section" id="directions" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head split">
+          <h2 class="reveal-text" data-reveal>Четыре направления, одна цель</h2>
+          <p class="lead">Сильное и гибкое тело без перегрузок. Можно совмещать направления по одному абонементу.</p>
+        </div>
+        <div class="dirs">
+          <a class="dir" href="#schedule" data-filter="reformer"><img src="assets/img/reformer-hero.webp" alt="Пилатес на реформере" loading="lazy"><span class="dir-num">01</span>
+            <div class="dir-body"><h3>Пилатес на реформере</h3><p>Тренажёр с пружинами даёт и поддержку, и сопротивление. Укрепляет глубокие мышцы и осанку.</p><div class="dir-meta"><span>55 минут</span><span>до 8 человек</span></div></div></a>
+          <a class="dir" href="#schedule" data-filter="stretch"><img src="assets/img/stretch-lunge.webp" alt="Растяжка в зале" loading="lazy"><span class="dir-num">02</span>
+            <div class="dir-body"><h3>Растяжка</h3><p>Мягко раскрываем бёдра, спину и плечи. Для гибкости, лёгкости и спокойного сна.</p><div class="dir-meta"><span>60 минут</span><span>любой уровень</span></div></div></a>
+          <a class="dir" href="#schedule" data-filter="yoga"><img src="assets/img/yoga-flow.webp" alt="Йога в зале с окнами" loading="lazy"><span class="dir-num">03</span>
+            <div class="dir-body"><h3>Йога</h3><p>Хатха и виньяса: дыхание, баланс и сила. Помогает снять напряжение после рабочего дня.</p><div class="dir-meta"><span>75 минут</span><span>любой уровень</span></div></div></a>
+          <a class="dir" href="#schedule" data-filter="aero"><img src="assets/img/aero-hall.webp" alt="Аэройога в гамаках" loading="lazy" style="object-position:60% 50%"><span class="dir-num">04</span>
+            <div class="dir-body"><h3>Аэройога</h3><p>Асаны в мягком гамаке: вытяжение позвоночника и перевёрнутые позы без нагрузки на шею.</p><div class="dir-meta"><span>60 минут</span><span>до 6 человек</span></div></div></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- расписание -->
+    <section class="section" id="schedule" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head split">
+          <h2 class="reveal-text" data-reveal>Расписание на неделю</h2>
+          <p class="lead">Выберите день и направление, нажмите «Записаться» — администратор подтвердит место.</p>
+        </div>
+        <div class="sched">
+          <div class="days" id="days" role="tablist" aria-label="Дни недели"></div>
+          <div class="filters" id="filters" aria-label="Направления"></div>
+          <div class="classes" id="classes" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- абонементы -->
+    <section class="section" id="prices" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head split">
+          <h2 class="reveal-text" data-reveal>Абонементы</h2>
+          <p class="lead">Один абонемент на все направления. Заморозка — до 14 дней.</p>
+        </div>
+        <div class="prices">
+          <article class="price p1"><div class="grain"></div>
+            <div class="price-top"><b style="font-weight:500">Пробное</b><span>для новых гостей</span></div>
+            <div class="big num">1<small>занятие</small></div>
+            <ul><li><svg><use href="#check"/></svg>Любое направление</li><li><svg><use href="#check"/></svg>Знакомство с тренером и студией</li><li><svg><use href="#check"/></svg>Коврик и полотенце выдаём</li></ul>
+            <div class="price-sum num">500 ₽</div>
+            <a class="btn btn-dark" href="#signup" data-plan="Пробное занятие">Записаться</a></article>
+          <article class="price p2"><div class="grain"></div>
+            <div class="price-top"><b style="font-weight:500">Восемь</b><span>выбирают чаще всего</span></div>
+            <div class="big num">8<small>занятий</small></div>
+            <ul><li><svg><use href="#check"/></svg>Действует 6 недель</li><li><svg><use href="#check"/></svg>Все направления</li><li><svg><use href="#check"/></svg>Заморозка до 14 дней</li></ul>
+            <div class="price-sum num">6 400 ₽<small>800 ₽ за занятие</small></div>
+            <a class="btn" href="#signup" data-plan="Абонемент на 8 занятий">Купить абонемент</a></article>
+          <article class="price p3"><div class="grain"></div>
+            <div class="price-top"><b style="font-weight:500">Безлимит</b><span>для регулярных</span></div>
+            <div class="big">∞<small>месяц</small></div>
+            <ul><li><svg><use href="#check"/></svg>Сколько угодно занятий за 30 дней</li><li><svg><use href="#check"/></svg>Приоритетная запись</li><li><svg><use href="#check"/></svg>Гостевое занятие для подруги</li></ul>
+            <div class="price-sum num">9 900 ₽</div>
+            <a class="btn btn-dark" href="#signup" data-plan="Безлимит на месяц">Купить абонемент</a></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- тренеры -->
+    <section class="section" id="coaches" style="padding-top:0">
+      <div class="wrap">
+        <div class="coaches-stage">
+          <div class="coaches-title">
+            <h2 class="reveal-text" data-reveal>Наши тренеры</h2>
+            <p class="lead" style="text-align:center">У каждого — профильное образование и сертификаты. Они ведут не просто тренировку, а вас.</p>
+            <a class="btn btn-dark" href="#signup">Записаться к тренеру</a>
+          </div>
+          <div class="coach-grid">
+            <figure class="coach c1" style="margin:0"><div class="coach-photo"><img src="assets/img/coach-1.webp" alt="Тренер Алина" loading="lazy"></div><span class="exp">6 лет опыта</span><b>Алина</b><small>Растяжка</small></figure>
+            <figure class="coach c2" style="margin:0"><div class="coach-photo"><img src="assets/img/coach-2.webp" alt="Тренер Вера" loading="lazy"></div><span class="exp">9 лет опыта</span><b>Вера</b><small>Реформер, основатель студии</small></figure>
+            <figure class="coach c3" style="margin:0"><div class="coach-photo"><img src="assets/img/coach-3.webp" alt="Тренер Дарья" loading="lazy"></div><span class="exp">5 лет опыта</span><b>Дарья</b><small>Йога и аэройога</small></figure>
+            <figure class="coach c4" style="margin:0"><div class="coach-photo"><img src="assets/img/coach-4.webp" alt="Тренер Ксения" loading="lazy"></div><span class="exp">4 года опыта</span><b>Ксения</b><small>Реформер и растяжка</small></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- студия -->
+    <section class="section" id="studio" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head split">
+          <h2 class="reveal-text" data-reveal>Загляните в студию</h2>
+          <div class="strip-nav" style="justify-self:end"><button class="round" type="button" id="strip-prev" aria-label="Назад"><svg><use href="#back"/></svg></button><button class="round" type="button" id="strip-next" aria-label="Вперёд"><svg><use href="#arrow"/></svg></button></div>
+        </div>
+        <div class="strip" id="strip" tabindex="0" aria-label="Фото студии">
+          <figure><img src="assets/img/studio-reformers.webp" alt="Ряд реформеров в зале" loading="lazy"><figcaption>Зал реформеров</figcaption></figure>
+          <figure><img src="assets/img/stretch-squat.webp" alt="Растяжка у зеркал" loading="lazy"><figcaption>Белый зал с зеркалами для растяжки</figcaption></figure>
+          <figure><img src="assets/img/yoga-dog.webp" alt="Йога у панорамных окон" loading="lazy"><figcaption>Йога у панорамных окон</figcaption></figure>
+          <figure><img src="assets/img/stretch-split.webp" alt="Растяжка на ковриках" loading="lazy"><figcaption>Утренняя растяжка</figcaption></figure>
+          <figure><img src="assets/img/reformer-sit.webp" alt="Занятие на реформере" loading="lazy"><figcaption>Персональные тренировки на реформере</figcaption></figure>
+          <figure><img src="assets/img/stretch-side.webp" alt="Боковые наклоны в шпагате" loading="lazy"><figcaption>Мягкий вечерний стретчинг</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- вопросы -->
+    <section class="section" id="faq" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head"><h2 class="reveal-text" data-reveal>Частые вопросы</h2></div>
+        <div class="faq">
+          <details><summary>Мне нужна подготовка, чтобы прийти?<i></i></summary><p>Нет. Группы смешанные, тренер даёт варианты упражнений для новичков и для тех, кто занимается давно. Если сомневаетесь, начните с растяжки или пробного занятия на реформере.</p></details>
+          <details><summary>Что взять с собой?<i></i></summary><p>Удобную одежду, носки с нескользящей подошвой для реформера и воду. Коврики, полотенца и всё оборудование есть в студии.</p></details>
+          <details><summary>Как отменить или перенести запись?<i></i></summary><p>Напишите администратору не позже чем за 6 часов до начала — занятие не сгорит. При поздней отмене оно списывается с абонемента.</p></details>
+          <details><summary>Можно ли заниматься при болях в спине или во время беременности?<i></i></summary><p>Часто да, но сначала посоветуйтесь с врачом и предупредите тренера. Мы подберём безопасную нагрузку или предложим персональное занятие.</p></details>
+          <details><summary>Есть ли персональные тренировки?<i></i></summary><p>Да, на реформере и по растяжке. Стоимость и время уточняйте у администратора.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- запись -->
+    <section class="contact" id="signup">
+      <div class="wrap">
+        <div class="contact-word-wrap" id="contact-word">
+          <div class="contact-word" aria-hidden="true">ЗАПИСАТЬСЯ</div>
+          <div class="contact-card" id="contact-card"><b>Spark</b><span>+7 900 000-00-00</span><span>hello@spark-studio.ru</span><span>Ежедневно 7:30–22:00</span></div>
+        </div>
+        <div class="form-wrap">
+          <div class="contacts-list">
+            <h2 style="font-size:clamp(1.8rem,3vw,2.6rem)">Пробное занятие за 500 ₽</h2>
+            <p class="lead">Оставьте заявку — администратор позвонит, подберёт удобное время и ответит на вопросы.</p>
+            <div><small>Телефон</small><span class="num">+7 900 000-00-00</span></div>
+            <div><small>Почта</small><span>hello@spark-studio.ru</span></div>
+            <div><small>Мы открыты</small><span>каждый день с 7:30 до 22:00</span></div>
+          </div>
+          <form class="form" id="signup-form" novalidate>
+            <div id="form-body" style="display:grid;gap:14px">
+              <div class="row2">
+                <div class="field"><label for="f-name">Имя</label><input class="input" id="f-name" name="name" autocomplete="given-name" required placeholder="Как к вам обращаться"></div>
+                <div class="field"><label for="f-phone">Телефон</label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" required placeholder="+7 ___ ___-__-__" inputmode="tel"></div>
+              </div>
+              <div class="row2">
+                <div class="field"><label for="f-dir">Направление</label><select class="input" id="f-dir" name="direction"><option>Пробное — любое</option><option>Пилатес на реформере</option><option>Растяжка</option><option>Йога</option><option>Аэройога</option><option>Абонемент на 8 занятий</option><option>Безлимит на месяц</option></select></div>
+                <div class="field"><label for="f-time">Удобное время</label><select class="input" id="f-time" name="time"><option>Утро</option><option>День</option><option selected>Вечер</option><option>Выходные</option></select></div>
+              </div>
+              <label class="check"><input type="checkbox" id="f-consent" required><span>Даю согласие на обработку персональных данных по <button class="linkish" type="button" data-policy>политике конфиденциальности</button></span></label>
+              <button class="btn btn-crimson" type="submit">Отправить заявку</button>
+              <p class="form-note">Перезвоним в течение 15 минут в рабочее время.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="logo" href="#top" style="font-size:1.2rem"><svg aria-hidden="true" style="width:22px;height:22px"><use href="#star"/></svg>spark</a>
+      <span>Концепт сайта для портфолио. Студия, тренеры и контакты вымышлены.</span>
+      <button class="linkish" type="button" data-policy style="color:var(--muted)">Политика конфиденциальности</button>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
