@@ -55,13 +55,66 @@
   });
   menu.addEventListener("click", (e) => { if (e.target.closest("a")) { burger.setAttribute("aria-expanded", "false"); menu.hidden = true; document.body.style.overflow = ""; } });
 
-  /* ---------- заголовок: слова проявляются ---------- */
-  const h1 = $("#hero-title");
-  h1.innerHTML = h1.textContent.split(" ").map((w, i) => `<span class="w" style="--i:${i}">${esc(w)}</span>`).join(" ");
+  /* ---------- заголовки разделов: режем на слова, большое слово — на буквы ---------- */
+  $$("[data-split]").forEach((el) => {
+    el.setAttribute("aria-label", el.textContent);
+    el.innerHTML = el.textContent.trim().split(/\s+/).map((w, i) => `<span class="wm" aria-hidden="true"><span class="wi" style="--i:${i}">${esc(w)}</span></span>`).join(" ");
+  });
+  const big = $("#contact-big");
+  if (big) big.innerHTML = [...big.textContent].map((c, i) => `<span class="ch" style="--i:${i}">${esc(c)}</span>`).join("");
+  $$("[data-stagger]").forEach((g) => [...g.children].forEach((c, i) => c.style.setProperty("--i", Math.min(i, 8))));
+
+  /* появляются один раз, когда попадают в экран */
+  const io = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { (e.target._for || e.target).classList.add("is-in"); io.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }) : null;
+  $$("[data-split], [data-stagger], #contact-big").forEach((el) => {
+    if (!io) return el.classList.add("is-in");
+    /* у блока с display: contents нет своей рамки — следим за родителем */
+    if (getComputedStyle(el).display === "contents") { el.parentElement._for = el; io.observe(el.parentElement); } else io.observe(el);
+  });
+
+  /* бегущая лента: дублируем содержимое, чтобы шла без шва */
+  const track = $(".ribbon-track");
+  if (track) track.innerHTML += track.innerHTML;
+
+  /* цены «набегают» один раз */
+  const counters = $$(".price-sum, .price .big");
+  const cio = io && !reduce ? new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return; cio.unobserve(e.target);
+      const node = e.target.firstChild; if (!node || node.nodeType !== 3) return;
+      const target = parseInt(node.textContent.replace(/\D/g, ""), 10); if (!target) return;
+      const rest = node.textContent.replace(/^[\d\s]+/, ""); const suffix = rest ? " " + rest : ""; const t0 = performance.now(); const dur = 1100;
+      const fmt = (n) => n.toLocaleString("ru-RU").replace(/[\u00a0\u202f]/g, " ");
+      (function step(t) {
+        const k = Math.min(1, (t - t0) / dur); const v = Math.round(target * (1 - Math.pow(1 - k, 4)));
+        node.textContent = fmt(v) + suffix; if (k < 1) requestAnimationFrame(step);
+      })(t0);
+    });
+  }, { threshold: 0.6 }) : null;
+  if (cio) counters.forEach((c) => cio.observe(c));
+
+  /* курсор: искры и пятна в первом экране слегка смещаются, главная кнопка притягивается */
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const hero = $(".hero");
+  if (fine && !reduce && hero) {
+    hero.addEventListener("pointermove", (e) => {
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty("--mx", ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+      hero.style.setProperty("--my", ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+    });
+    hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", 0); hero.style.setProperty("--my", 0); });
+    $$(".spark", hero).forEach((sp, i) => sp.style.setProperty("--z", (14 + i * 9) + "px"));
+    $$(".magnetic").forEach((b) => {
+      b.addEventListener("pointermove", (e) => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.18}px, ${(e.clientY - r.top - r.height / 2) * 0.3}px)`; });
+      b.addEventListener("pointerleave", () => { b.style.transform = ""; });
+    });
+  }
 
   /* ---------- прокрутка: солнце, облака, проявление текста, карточка ---------- */
   const sun = $("#sun"), clouds = $("#clouds");
-  const reveals = $$("[data-reveal]");
+  const logoStar = $(".header .logo svg");
   const card = $("#contact-card"), word = $("#contact-word");
   let ticking = false;
   function onScroll() {
@@ -72,11 +125,7 @@
     const k = Math.min(1, y / (vh * 0.9));
     sun.style.setProperty("--sun-y", (30 - k * 75) + "%");
     clouds.style.setProperty("--cloud-y", (k * 60) + "px");
-    reveals.forEach((el) => {
-      const r = el.getBoundingClientRect();
-      const p = Math.max(0, Math.min(1, (vh * 0.92 - r.top) / (vh * 0.45)));
-      el.style.setProperty("--p", (p * 100).toFixed(1) + "%");
-    });
+    logoStar.style.transform = `rotate(${(y * 0.12) % 360}deg)`;
     if (card && word) {
       const r = word.getBoundingClientRect();
       const p = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.7)));
@@ -118,7 +167,7 @@
     const nowMin = now.getHours() * 60 + now.getMinutes();
     const slots = WEEK[curDay].filter((s) => curFilter === "all" || s[1] === curFilter);
     if (!slots.length) { $("#classes").innerHTML = `<div class="empty-day">В этот день нет занятий по выбранному направлению. Попробуйте другой день.</div>`; return; }
-    $("#classes").innerHTML = slots.map((s) => {
+    $("#classes").innerHTML = slots.map((s, idx) => {
       const D = DIRS[s[1]], C = COACH[s[2]];
       const taken = takenOf(curDay, s); const left = D.cap - taken;
       const [h, m] = s[0].split(":").map(Number);
@@ -130,7 +179,7 @@
         : booked[key] ? `<button class="btn btn-sm" type="button" disabled>Вы записаны</button>`
         : left <= 0 ? `<button class="btn btn-sm" type="button" disabled>Мест нет</button>`
         : `<button class="btn btn-dark btn-sm" type="button" data-book="${esc(key)}" data-slot="${esc(JSON.stringify(s))}">Записаться</button>`;
-      return `<div class="cls">
+      return `<div class="cls" style="--i:${idx}">
         <div class="cls-time num">${s[0]}<small>до ${endStr}</small></div>
         <div class="cls-name" style="--c:${D.c}"><i></i><div>${esc(D.name)}<small>${esc(s[3])} · ${D.len} мин</small></div></div>
         <div class="cls-coach"><img src="${C.img}" alt="" width="36" height="36" loading="lazy">${esc(C.name)}</div>
