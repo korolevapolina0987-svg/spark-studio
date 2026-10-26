@@ -165,8 +165,13 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 @media (max-width: 560px) {
   .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 110px; }
-  .t1 { grid-column: span 2; grid-row: span 3; } .t2 { grid-column: span 1; grid-row: span 2; } .t4 { grid-column: span 1; grid-row: span 2; }
-  .t3, .t5, .t6, .t7, .t8 { grid-column: span 2; }
+  .t1 { grid-column: span 2; grid-row: span 3; }
+  .t2, .t3, .t4, .t5, .t6, .t7, .t8 { grid-column: span 2; }
+  /* цифры — вытянутые плашки, как «Сегодня в студии»: число слева, подпись справа */
+  .t2, .t4 { grid-row: span 1; flex-direction: row; align-items: center; justify-content: flex-start; gap: 18px; }
+  .t2 .big, .t4 .big { font-size: 3.4rem !important; flex: none; min-width: 1.1ch; }
+  .t2 p, .t4 p { font-size: 1rem; line-height: 1.35; }
+  .t4 p { font-size: 1.15rem; }
 }
 
 /* ---------- направления ---------- */
